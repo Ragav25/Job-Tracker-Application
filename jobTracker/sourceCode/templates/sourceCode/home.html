@@ -1,0 +1,15 @@
+
+  {% extends "sourceCode/base.html" %}
+
+  {% block content %}
+
+    <h1>Job Tracking Application!</h1>
+
+    {% for job in appliedJobs %}
+      <h1>Company: {{ job.company }}</h1>
+      <p>Role: {{ job.role }},  Applied on: {{ job.date_applied }}</p>
+      <p>Status: {{ job.status }}</p>
+
+    {% endfor %}
+
+    {% endblock content %}
