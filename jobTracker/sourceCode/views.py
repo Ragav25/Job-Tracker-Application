@@ -13,7 +13,9 @@ appliedJobs =[
         'company': 'Saber',
         'status': 'Pending',
         'date_applied': 'June 21'
-    }
+    },
+    
+
 ]
 
 def home(request):

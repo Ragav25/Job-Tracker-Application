@@ -1,15 +1,38 @@
 
   {% extends "sourceCode/base.html" %}
 
+  {% block sidenav%}
+  <div class="sidenav d-flex flex-column align-items-center justify-content-start">
+
+    <div class="mt-5">
+      Add Tracker
+    </div>
+    <div class="mt-5">
+      History
+    </div>
+    <div class="mt-5">
+      Sort By
+    </div>
+
+  </div>
+  {% endblock %}
+
   {% block content %}
-
-    <h1>Job Tracking Application!</h1>
-
+  <div class="tracker-content-section d-flex flex-column align-items-center">
     {% for job in appliedJobs %}
-      <h1>Company: {{ job.company }}</h1>
-      <p>Role: {{ job.role }},  Applied on: {{ job.date_applied }}</p>
-      <p>Status: {{ job.status }}</p>
+    <div class="card">
+      <div class="card-header d-flex justify-content-around align-items-end">
+        <p>Applied on: {{ job.date_applied }}</p>
+        <p>Status: {{ job.status }}</p>
+      </div>
+      <div class="card-body">
+        <p>Company :</p> <span class="ml-4">{{ job.company }}</span>
+        <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
+      </div>
+
+    </div>
 
     {% endfor %}
 
+  </div>
     {% endblock content %}
