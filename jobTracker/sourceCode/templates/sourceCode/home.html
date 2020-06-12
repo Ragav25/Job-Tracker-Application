@@ -22,7 +22,7 @@
     {% for job in appliedJobs %}
     <div class="card">
       <div class="card-header d-flex justify-content-around align-items-end">
-        <p>Applied on: {{ job.date_applied }}</p>
+        <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
         <p>Status: {{ job.status }}</p>
       </div>
       <div class="card-body">
