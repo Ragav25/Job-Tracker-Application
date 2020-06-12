@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Post
 
 
 appliedJobs =[
@@ -14,13 +15,13 @@ appliedJobs =[
         'status': 'Pending',
         'date_applied': 'June 21'
     },
-    
+
 
 ]
 
 def home(request):
     context = {
-        'appliedJobs' : appliedJobs
+        'appliedJobs' : Post.objects.all()
     }
     return render(request, 'sourceCode/home.html', context)
 
