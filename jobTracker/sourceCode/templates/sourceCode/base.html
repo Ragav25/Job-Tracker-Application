@@ -47,6 +47,13 @@
     {%  block sidenav %}{% endblock%}
   </div>
   <div class="col-md-10 ml-md-auto">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
     {% block content %}{% endblock %}
   </div>
 
