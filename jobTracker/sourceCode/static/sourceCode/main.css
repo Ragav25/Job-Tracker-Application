@@ -93,6 +93,17 @@ ul {
 .register-form {
   width: 80%;
   margin-top: 2rem;
+  border: 2px solid #388087;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #388087;
+  background-color: #F6F6F2;
+}
+
+.register-form legend  {
+  text-transform: uppercase;
+  color: #388087;
+  text-align: center;
 }
 
 .register-form button {
