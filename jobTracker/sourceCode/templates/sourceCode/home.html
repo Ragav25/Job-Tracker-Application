@@ -4,6 +4,12 @@
   {% block sidenav%}
   <div class="sidenav d-flex flex-column align-items-center justify-content-start">
 
+    <a class="mt-5 d-flex flex-column align-items-center justify-content-center sidenav-user-info"
+    href="{% url 'profile'%}">
+      <img class="rounded sidenav-img" src="{{ user.profile.image.url }}" >
+    <h2 class="mt-2">{{user.username}}</h2>
+    </a>
+
     <div class="mt-5">
       Add Tracker
     </div>
