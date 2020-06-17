@@ -44,6 +44,25 @@ ul {
   color: #388087;s
 }
 
+.sidenav-user-info {
+  width: 180px;
+  height: 200px;
+  border-radius: 1rem;
+  transition: all  0.5s;
+}
+.sidenav-user-info:hover {
+  background: #E5E5E5;
+  cursor: pointer;
+  text-decoration:none;
+}
+.sidenav-img {
+  width: 120px;
+  height: 120px;
+}
+.sidenav-user-info h2 {
+  color: #388087;
+}
+
 .tracker-content-section{
   background: #F6F6F2;
   padding: 10px 20px;
@@ -130,7 +149,31 @@ ul {
 /* profile.html */
 
 .profile-section {
-  /* background-color: red; */
+  width: 80%;
+  margin-top: 3rem;
+  border: 2px solid #388087;
+  padding: 10px 20px;
+  border-radius: 2rem;
+  color: #388087;
+  text-transform: uppercase;
+  background-color: #F6F6F2;
+}
+
+.profile-section legend {
+  text-transform: uppercase;
+}
+
+.image-section {
+  text-align: center;
+}
+
+.profile-section .asteriskField{
+  color: black;
+}
+
+#id_image {
+  width: 20%;
+  margin: auto;
 }
 
 .account-img {
@@ -142,6 +185,27 @@ ul {
 
 .account-heading {
   font-size: 2.5rem;
+}
+.profile-section button {
+
+}
+
+@media screen and (max-width: 768px) {
+  .profile-section {
+    margin-top: 0rem;
+  }
+  #id_image {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-section {
+    margin-top: 0rem;
+    width: 100%;
+  }
+  #id_image {
+    width: 100%;
+  }
 }
 
 /* end of profile.html */
