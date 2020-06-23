@@ -1,0 +1,20 @@
+{% extends "sourceCode/base.html" %}
+
+{% block content %}
+
+  <div class="add-form" id="check">
+    <form  method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Delete JOB</legend>
+        <h2>Are you sure you want to delete the job!</h2>
+        <p>{{ object.company }} : {{ object.role }}</p>
+      </fieldset>
+      <div class="form-group" id="add-button">
+        <button class="btn btn-outline-danger" type="submit" name="button">Delete</button>
+        <a class="btn btn-outline-secondary" href="{% url 'jobTrack-home' %}">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  {% endblock content %}

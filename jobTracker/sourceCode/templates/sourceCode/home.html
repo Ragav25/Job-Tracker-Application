@@ -10,9 +10,9 @@
     <h2 class="mt-2">{{user.username}}</h2>
     </a>
 
-    <div class="mt-5">
-      Add Tracker
-    </div>
+    <a class="mt-5" href= {% url 'post-create' %}>
+      Add Job
+    </a>
     <div class="mt-5">
       History
     </div>
@@ -24,21 +24,44 @@
   {% endblock %}
 
   {% block content %}
+  {% if appliedJobs|length <= 0 %}
+
+  <div class="d-flex flex-column align-items-center justify-content-center default-text-home">
+          <h2>NO TRACKER AVAILABLE. </h2>
+      <h3>CLICK “ADD JOB ” TO TRACK JOBS</h3>
+      <a href="{% url 'post-create'%}"> ADD JOB</a>
+  </div>
+
+  {% else %}
   <div class="tracker-content-section d-flex flex-column align-items-center">
     {% for job in appliedJobs %}
+      <!-- {% if job.author == user %} -->
     <div class="card">
-      <div class="card-header d-flex justify-content-around align-items-end">
-        <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
-        <p>Status: {{ job.status }}</p>
-      </div>
-      <div class="card-body">
-        <p>Company :</p> <span class="ml-4">{{ job.company }}</span>
-        <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
-      </div>
+        <div class="card-header d-flex justify-content-around align-items-end">
+          <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
+          <p>Status: {{ job.status }}</p>
+        </div>
+        <div class="card-body">
+          <p>Company :</p> <span class="ml-4">
+            <!-- <a href="{% url 'post-detail' job.id %}"> -->
+              {{ job.company }}</span>
+            <!-- </a> -->
+          <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'post-update' job.id %}" title="update">
+            <i class='fas fa-pen-alt update-icon'></i>
+          </a>
 
+          <a href="{% url 'post-delete' job.id %}" title="delete">
+            <i class='far fa-trash-alt delete-icon'></i>
+          </a>
+
+        </div>
     </div>
-
+      <!-- {% endif %} -->
     {% endfor %}
 
   </div>
+  {% endif %}
     {% endblock content %}
