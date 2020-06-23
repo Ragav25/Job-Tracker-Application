@@ -69,6 +69,33 @@ ul {
   border-radius: 10px;
 }
 
+.default-text-home {
+  /* background-color: red; */
+  min-height: 85vh;
+}
+.default-text-home h2,
+.default-text-home h3  {
+  color: #388087;
+  opacity: 75%;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.3vw;
+}
+
+.default-text-home a {
+  background-color: #388087;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #F6F6F2;
+  font-weight: bold;
+}
+
+.default-text-home a:hover {
+  /* color: #388087; */
+  background-color: #3E5050;
+}
+
 .card {
   background-color: #388087;
   margin: 2rem 0;
@@ -99,19 +126,50 @@ ul {
     clear: left;
     width: 42%;
     text-align: right;
-  font-size: 1.3vw;
+    font-size: 1.3vw;
+    font-weight: bold;
 }
 
 .card-body span{
   display: inline-block;
   float: left;
   font-size: 1.3vw;
+  color: #3E5050;
+  font-weight: bold;
 }
+
+.card-footer {
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card-footer a {
+  color: #F6F6F2;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 2vw;
+}
+
+.card-footer a i {
+  font-size: 1vw;
+}
+
+.card-footer .update-icon:hover {
+  color: #3E5050;
+}
+
+.card-footer .delete-icon:hover {
+  color: #AB1500;
+}
+
 /* end of home.html */
 
 /* register.html */
 
-.register-form {
+.register-form,
+.add-form {
   width: 80%;
   margin-top: 2rem;
   border: 2px solid #388087;
@@ -133,12 +191,14 @@ ul {
 }
 
 @media screen and (max-width: 768px) {
-  .register-form {
+  .register-form,
+  .add-form {
     margin-top: 0rem;
   }
 }
 @media screen and (max-width: 500px) {
-  .register-form {
+  .register-form,
+  .add-form {
     margin-top: 0rem;
     width: 100%;
   }
@@ -209,6 +269,16 @@ ul {
 }
 
 /* end of profile.html */
+
+/* add form */
+
+.add-form textarea {
+  height: 3rem;
+}
+
+.add-form #add-button {
+  text-align: center;
+}
 
 /* .article-title {
   color: #444444;
