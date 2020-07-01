@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'sourceCode.apps.SourcecodeConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'django_filters',
     'django_cleanup',
     'django.contrib.admin',
     'django.contrib.auth',

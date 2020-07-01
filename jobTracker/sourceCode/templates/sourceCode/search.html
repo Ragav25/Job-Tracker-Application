@@ -1,0 +1,45 @@
+{% extends "sourceCode/base.html" %}
+
+{% block content %}
+
+<div class="search-section">
+
+<form class="search-form" method="GET">
+  <div class="search-inputs d-flex justify-content-center">
+    {{ filter.form.as_p }}
+  </div>
+  <button type="submit" class="btn btn-primary" name="button"> search </button>
+</form>
+
+
+{% for job in filter.qs %}
+<!-- {% if job.author == user %} -->
+<div class="card">
+  <div class="card-header d-flex justify-content-around align-items-end">
+    <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
+    <p>Status: {{ job.status }}</p>
+  </div>
+  <div class="card-body">
+    <p>Company :</p> <span class="ml-4">
+      <!-- <a href="{% url 'post-detail' job.id %}"> -->
+        {{ job.company }}</span>
+      <!-- </a> -->
+    <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
+  </div>
+  <div class="card-footer">
+    <a href="{% url 'post-update' job.id %}" title="update">
+      <i class='fas fa-pen-alt update-icon'></i>
+    </a>
+
+    <a href="{% url 'post-delete' job.id %}" title="delete">
+      <i class='far fa-trash-alt delete-icon'></i>
+    </a>
+
+  </div>
+</div>
+<!-- {% endif %} -->
+{% endfor %}
+
+</div>
+
+{% endblock content %}
