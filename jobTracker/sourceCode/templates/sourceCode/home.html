@@ -13,11 +13,14 @@
     <a class="mt-5" href= {% url 'post-create' %}>
       Add Job
     </a>
-    
-    <div class="mt-5">
-    <a href={% url 'jobTrack-search' %}>
-      Search</a>
+
+    <div class="mt-3">
+      History
     </div>
+
+    <a class="advance-search mt-3"
+      href="{% url 'jobTrack-advancesearch' %}">Advance Search
+    </a>
 
   </div>
   {% endblock %}
@@ -35,34 +38,85 @@
 
   <div class="tracker-content-section d-flex flex-column align-items-center">
 
+    <div class="search-sort d-flex justify-content-between">
+
+      <form class="home-form" action="." method="GET">
+        <div class="form-row d-flex justify-content-center">
+          <div class="form-group col-sm-10">
+            <div class="input-group">
+              <input class="form-control py-2 border-right-0 border" type="search" name="company_or_role_contains" placeholder="Company / Role">
+              <span class="input-group-append">
+                <button type="submit" class="input-group-text bg-transparent">
+                  <i class='fa fa-search'></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="sorting-section mt-2 d-flex justify-content-end">
+        <p class="mr-3 mt-2">SORT BY:</p>
+        <form class="checking" action="." method="GET">
+          <button class="child-btn btn" id="dateasc" onclick="return true" type="submit" name="date-asc" value="date_applied"> date <i class="fa fa-sort-amount-asc"></i> </button>
+          <button class="child-btn btn" id=""  type="submit" name="date-desc" value="-date_applied">date <i class="fa fa-sort-amount-desc"></i></button>
+
+          <button class="child-btn btn" id="" type="submit" name="company-asc" value="company">company <i class="fa fa-sort-alpha-asc"></i></button>
+          <button class="child-btn btn" id="" type="submit" name="company-desc" value="-company">company <i class="fa fa-sort-alpha-desc"></i></button>
+
+          <!-- <button class="btn"  type="submit" name="role-asc" value="role">role ascending</button>
+          <button class="btn"  type="submit" name="role-desc" value="-role">role decending</button> -->
+        </form>
+      </div>
+    </div>
+
+
+    <!-- <form class="home-form" action="." method="GET">
+      <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-8">
+          <div class="input-group">
+            <input class="form-control py-2 border-right-0 border" type="search" name="company_or_role_contains" placeholder="Company or Role..">
+            <span class="input-group-append">
+              <button type="submit" class="input-group-text bg-transparent">
+                <i class='fa fa-search'></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="advance-search">
+        <a href="{% url 'jobTrack-advancesearch' %}">Advance Search</a>
+      </div>
+  </form> -->
+
         {% for job in appliedJobs %}
 
-        <!-- {% if job.author == user %} -->
-        <div class="card">
-          <div class="card-header d-flex justify-content-around align-items-end">
-            <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
-            <p>Status: {{ job.status }}</p>
-          </div>
-          <div class="card-body">
-            <p>Company :</p> <span class="ml-4">
-              <!-- <a href="{% url 'post-detail' job.id %}"> -->
-                {{ job.company }}</span>
-              <!-- </a> -->
-            <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
-          </div>
-          <div class="card-footer">
-            <a href="{% url 'post-update' job.id %}" title="update">
-              <i class='fas fa-pen-alt update-icon'></i>
-            </a>
+          <div class="card">
+            <div class="card-header d-flex justify-content-around align-items-end">
+              <p>Applied on: {{ job.date_applied|date:"M d, Y" }}</p>
+              <p>Status: {{ job.status }}</p>
+            </div>
+            <div class="card-body">
+              <p>Company :</p> <span class="ml-4">
+                <!-- <a href="{% url 'post-detail' job.id %}"> -->
+                  {{ job.company }}</span>
+                <!-- </a> -->
+              <p>Role :</p> <span class="ml-4">{{ job.role }}</span>
+            </div>
+            <div class="card-footer">
+              <a href="{% url 'post-update' job.id %}" title="update">
+                <i class='fas fa-pen-alt update-icon'></i>
+              </a>
 
-            <a href="{% url 'post-delete' job.id %}" title="delete">
-              <i class='far fa-trash-alt delete-icon'></i>
-            </a>
+              <a href="{% url 'post-delete' job.id %}" title="delete">
+                <i class='far fa-trash-alt delete-icon'></i>
+              </a>
 
+            </div>
           </div>
-      </div>
-        <!-- {% endif %} -->
+
         {% endfor %}
+
         <div class="pagination-section">
           {% if is_paginated %}
             {% if page_obj.has_previous %}

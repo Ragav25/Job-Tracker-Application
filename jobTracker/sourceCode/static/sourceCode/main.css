@@ -41,7 +41,7 @@ ul {
   width: 16%;
   margin-top: -5rem;
   padding-top: 5rem;
-  color: #388087;s
+  color: #388087;
 }
 
 .sidenav-user-info {
@@ -61,6 +61,60 @@ ul {
 }
 .sidenav-user-info h2 {
   color: #388087;
+}
+
+.search-sort {
+  /* background: blue; */
+  width: 100%;
+}
+
+.sorting-section {
+  /* background-color: red; */
+  /* width: 50%; */
+}
+
+
+.sorting-section button {
+  /* background-color: #388087; */
+  /* color: #E5E5E5; */
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.active {
+  background-color: blue;
+  color: red;
+}
+
+.home-form {
+  /* background-color: red; */
+  padding: 10px 20px;
+  width: 50%;
+}
+.home-form input::placeholder {
+  font-weight: bold;
+}
+
+.home-form span{
+  background-color: #388087;
+  border-radius: 5px;
+}
+.home-form span:hover{
+  background-color: #3E5050;
+}
+.home-form button {
+  cursor: pointer;
+  border-radius: none;
+  outline: none;
+}
+.home-form button i {
+  color: #E5E5E5;
+}
+
+.advance-search a {
+  color: #388087;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .tracker-content-section{
@@ -305,6 +359,20 @@ ul {
 }
 
 /* end search */
+
+/* advance_search.html */
+
+.advance-search-section {
+width: 80%;
+}
+.advance-search-form {
+  /* width: 80%; */
+  text-align: center;
+}
+.advance-search-section .card{
+width: 100%;
+}
+
 
 /* .article-title {
   color: #444444;
