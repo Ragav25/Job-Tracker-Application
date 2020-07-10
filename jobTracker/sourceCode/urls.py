@@ -5,14 +5,16 @@ from .views import (
                 PostCreateView,
                 PostUpdateView,
                 PostDeleteView,
-                SearchListView
+                # SearchListView
                 )
 from . import views
 
 urlpatterns = [
-    path('', PostListView.as_view(), name='jobTrack-home'),
-    path('job/search', SearchListView.as_view(), name='jobTrack-search'),
-    # path('', views.home, name='jobTrack-home'),
+    path('', views.home, name='jobTrack-home'),
+    # path('', PostListView.as_view(), name='jobTrack-home'),
+    path('job/advancesearch/', views.advance_search, name='jobTrack-advancesearch'),
+    # path('job/search', SearchListView.as_view(), name='jobTrack-search'),
+
     path('job/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('job/new/', PostCreateView.as_view(), name='post-create'),
     path('job/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
