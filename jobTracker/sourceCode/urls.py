@@ -12,7 +12,8 @@ from . import views
 urlpatterns = [
     path('', views.home, name='jobTrack-home'),
     # path('', PostListView.as_view(), name='jobTrack-home'),
-    path('job/advancesearch/', views.advance_search, name='jobTrack-advancesearch'),
+    path('jobs/advancesearch/', views.advance_search, name='jobTrack-advancesearch'),
+    path('jobs/history/', views.history, name='jobTrack-history'),
     # path('job/search', SearchListView.as_view(), name='jobTrack-search'),
 
     path('job/<int:pk>/', PostDetailView.as_view(), name='post-detail'),

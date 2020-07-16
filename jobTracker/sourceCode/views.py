@@ -21,7 +21,7 @@ def is_vaild_queryparam(param):
 @login_required
 def home(request):
     current_user = User.objects.filter(username=request.user)
-    qs = Post.objects.filter(author=current_user[0]).order_by('-date_applied')
+    qs = Post.objects.filter(author=current_user[0], status='pending').order_by('-date_applied')
 
     company_or_role_query = request.GET.get('company_or_role_contains')
 
@@ -54,7 +54,7 @@ def home(request):
 
     if is_vaild_queryparam(role_descending):
         qs = qs.order_by(role_descending)
-        
+
     context = {
         'appliedJobs' : qs
     }
@@ -94,6 +94,24 @@ def advance_search(request):
 
     return render(request, 'sourceCode/advance_search.html', context)
 
+def history(request):
+    current_user = User.objects.filter(username=request.user)
+    qs = Post.objects.filter(author=current_user[0], status='success').order_by('-date_applied')
+
+    qs_status = Post._meta.get_field('status')
+
+    status = request.GET.get('value')
+
+    if is_vaild_queryparam(status) :
+        qs = Post.objects.filter(author=current_user[0], status=status).order_by('-date_applied')
+
+    context = {
+        'queryset' : qs,
+        'qs_status' : qs_status
+    }
+
+    return render(request, 'sourceCode/history.html', context)
+
 
 class PostListView(ListView):
     model = Post
@@ -101,17 +119,6 @@ class PostListView(ListView):
     context_object_name = 'appliedJobs'
     ordering = ['-date_applied']
     paginate_by = 5
-
-
-# class SearchListView(ListView):
-#     model = Post
-#     template_name = 'sourceCode/search.html'
-#
-#     def get_context_data(self, **kwargs):
-#         current_user = User.objects.filter(username=self.request.user)
-#         context = super().get_context_data(**kwargs)
-#         context['filter'] = PostFilters(self.request.GET, queryset=Post.objects.filter(author=current_user[0]).order_by('-date_applied'))
-#         return context
 
 class PostDetailView(DetailView):
     model = Post
