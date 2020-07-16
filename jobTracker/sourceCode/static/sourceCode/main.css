@@ -1,6 +1,5 @@
 body {
   background: #E5E5E5;
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -152,11 +151,15 @@ ul {
 
 .card {
   background-color: #388087;
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
   border-radius: 10px;
   border-color: #F6F6F2;
   width: 80%;
   color: white;
+}
+
+.card:hover{
+  background-color: #3E5050;
 }
 
 .card-header {
@@ -173,8 +176,64 @@ ul {
   text-transform: uppercase;
 
 }
-.card-body p{
-  /* background:red; */
+.card-body .card-firstcol {
+  font-weight: bold;
+  /* background-color: red; */
+}
+
+.card-body .card-firstcol h4 {
+  font-weight: bold;
+  font-size: 1.8vw;
+}
+
+.card-body .card-firstcol p {
+  font-size: 1vw;
+}
+
+.card-body .card-secondcol {
+  /* background-color: blue; */
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+.card-body .card-thirdcol {
+/* background-color: green; */
+font-weight: bold;
+font-size: 1vw;
+/* text-align: right; */
+}
+
+.card-body .card-thirdcol .icons-card {
+  /* background-color: red; */
+  font-size: 1.2vw;
+}
+
+.card-body .card-thirdcol .icons-card  {
+  display: none;
+}
+.card:hover .card-body .card-thirdcol .icons-card {
+  display: block;
+}
+
+.card-body .card-thirdcol .icons-card a {
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.card-body .card-thirdcol .icons-card a i {
+  color: #F6F6F2;
+}
+
+.card-body .card-thirdcol .icons-card a .update-icon:hover {
+  color: #00AF66;
+}
+
+.card-body .card-thirdcol .icons-card a .delete-icon:hover {
+  color: red;
+}
+
+/* .card-body p{
     display: inline-block;
     float: left;
     clear: left;
@@ -190,7 +249,7 @@ ul {
   font-size: 1.3vw;
   color: #3E5050;
   font-weight: bold;
-}
+} */
 
 .card-footer {
   height: 8%;
@@ -373,50 +432,73 @@ width: 80%;
 width: 100%;
 }
 
+/* end advancesearch */
 
-/* .article-title {
-  color: #444444;
+/* history */
+.history-section{
+  /* background-color: red; */
+  width: 80%;
+  padding: 10px 0px;
 }
 
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
+.history-buttons {
+  width: 100%;
+  /* background-color: blue; */
+  text-align: center;
 }
 
-.article-content {
-  white-space: pre-line;
+.history-buttons button {
+  width: 24%;
+  margin: 0;
+  color: #388087;
+  background-color: #C4C4C4;
+  font-weight: bold;
+  font-size: 1vw;
 }
 
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
+.history-buttons button:hover {
+  background-color: #388087;
+  color: #C4C4C4;
 }
 
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+.history-section .query-count {
+  color: #388087;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
+.history-section .query-count h5 {
+  font-size: 1.2vw;
+  font-weight: bold;
 }
 
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
+.history-section .card{
+width: 100%;
 }
 
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
+@media screen and (max-width: 500px) {
+  .history-section{
+    /* background-color: red; */
+    width: 100%;
+  }
+  .history-buttons button {
+    font-size: 2.3vw;
+  }
+  .history-section .query-count h5 {
+    font-size: 2.3vw;
+  }
 }
-
-.account-heading {
-  font-size: 2.5rem;
-} */
+@media screen and (max-width: 360px) {
+  .history-section{
+    /* background-color: red; */
+    width: 100%;
+  }
+  .history-buttons button {
+    width: 22%;
+    font-size: 2vw;
+  }
+  .history-section .query-count h5 {
+    font-size: 2.3vw;
+  }
+}
+/* end history */

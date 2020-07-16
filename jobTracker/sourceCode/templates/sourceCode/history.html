@@ -1,0 +1,43 @@
+{% extends "sourceCode/base.html" %}
+{% block content %}
+    <div class="history-section">
+      <div class="history-buttons">
+        <form class="" action="." method="GET">
+          {% for x, y in qs_status.choices %}
+              <!-- <option value="{{x}}">{{ y }}</option> -->
+              <button class="btn" type="submit" name="value" value="{{x}}">{{ y }}</button>
+          {% endfor %}
+        </form>
+      </div>
+      <div class="query-count mt-4">
+        <h5>Total: {{queryset|length}}</h5>
+      </div>
+      {% for job in queryset %}
+      <div class="card">
+        <div class="card-body container">
+          <div class="row">
+            <div class="card-firstcol col-md-6">
+              <h4>{{ job.company }}</h4>
+              <p>{{ job.role }}</p>
+            </div>
+            <div class="card-secondcol col-sm">
+              <p>{{ job.date_applied|date:"M d, Y" }}</p>
+            </div>
+            <div class="card-thirdcol col-sm">
+              <p>Status: {{ job.status }}</p>
+              <div class="icons-card">
+                <a href="{% url 'post-update' job.id %}" title="update">
+                  <i class='fas fa-pen-alt update-icon'></i>
+                </a>
+                <a href="{% url 'post-delete' job.id %}" title="delete">
+                  <i class='far fa-trash-alt delete-icon'></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+{% endblock content %}
