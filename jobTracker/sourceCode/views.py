@@ -21,7 +21,7 @@ def is_vaild_queryparam(param):
 @login_required
 def home(request):
     current_user = User.objects.filter(username=request.user)
-    qs = Post.objects.filter(author=current_user[0], status='pending').order_by('-date_applied')
+    qs = Post.objects.filter(author=current_user[0], status__in=['pending', 'interviewing']).order_by('-date_applied')
 
     company_or_role_query = request.GET.get('company_or_role_contains')
 
@@ -96,7 +96,7 @@ def advance_search(request):
 
 def history(request):
     current_user = User.objects.filter(username=request.user)
-    qs = Post.objects.filter(author=current_user[0], status='success').order_by('-date_applied')
+    qs = Post.objects.filter(author=current_user[0], status='interviewing').order_by('-date_applied')
 
     qs_status = Post._meta.get_field('status')
 
