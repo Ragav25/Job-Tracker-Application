@@ -1,6 +1,7 @@
 {% extends "sourceCode/base.html" %}
 {% block content %}
-    <div class="history-section">
+<div id="historyContainer"> hello</div>
+    <div class="historyContainer" >
       <div class="history-buttons">
         <form class="" action="." method="GET">
           {% for x, y in qs_status.choices %}
@@ -13,31 +14,45 @@
         <h5>Total: {{queryset|length}}</h5>
       </div>
       {% for job in queryset %}
-      <div class="card">
-        <div class="card-body container">
-          <div class="row">
-            <div class="card-firstcol col-md-6">
-              <h4>{{ job.company }}</h4>
-              <p>{{ job.role }}</p>
-            </div>
-            <div class="card-secondcol col-sm">
-              <p>{{ job.date_applied|date:"M d, Y" }}</p>
-            </div>
-            <div class="card-thirdcol col-sm">
-              <p>Status: {{ job.status }}</p>
-              <div class="icons-card">
+        <!-- <div class="card">
+          <div class="card-body container-fluid">
+            <div class="row mt-2">
+              <div class="col-3 company-card d-flex align-items-center">
+                {{ job.company }}
+              </div>
+              <div class="col-3 role-card d-flex align-items-center">
+                {{ job.role }}
+              </div>
+              <div class="col-2 status-card d-flex align-items-center"
+                {% if job.status == 'pending' %}
+                  style="color:#A5AF35;"
+                {% elif job.status == 'success'%}
+                  style="color:#00AF66;"
+                {% elif job.status == 'interviewing'%}
+                  style="color:#4C99D4;"
+                {% elif job.status == 'not-selected'%}
+                  style="color:#AB1500;"
+                {% endif %}
+              >
+                <i class="fa fa-circle"></i>{{ job.status }}
+              </div>
+              <div class="col date-card d-flex align-items-center">
+                {{ job.date_applied|date:"M d, Y" }}
+              </div>
+              <div class="col icon-card d-flex justify-content-around
+              align-items-center">
                 <a href="{% url 'post-update' job.id %}" title="update">
                   <i class='fas fa-pen-alt update-icon'></i>
                 </a>
+
                 <a href="{% url 'post-delete' job.id %}" title="delete">
                   <i class='far fa-trash-alt delete-icon'></i>
                 </a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      {% endfor %}
+        </div> -->
+    {% endfor %}
     </div>
 
 {% endblock content %}
